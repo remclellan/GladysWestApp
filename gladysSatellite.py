@@ -1,5 +1,6 @@
 import io
 import json
+import os
 
 """
 	Student: Gabriel Solomon
@@ -54,7 +55,7 @@ def gpsValue(x, y, sat):
 		You can/should remove this long comment before you submit your work.  
 		I'm just giving advice to try to help you. Good luck!  -Gabriel :)
 	"""
-	pathToJSONDataFiles = "/data"
+	pathToJSONDataFiles = os.path.realpath(os.path.join(os.path.dirname(__file__),'data'))
 
 	# read the satellite data
 	data = readSat(sat, pathToJSONDataFiles)
