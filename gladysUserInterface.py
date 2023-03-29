@@ -1,4 +1,5 @@
 import io
+import os
 
 import gladysCompute as compute
 import gladysSatellite as satellite
@@ -24,8 +25,7 @@ def runTests():
 	print("average = ", average)
 
 	# testing readSat function from gladysSatellite module
-	testData = satellite.readSat()
-	print(testData)
+	print("Testing sat module")
 
 	# testing login function from gladysUserLogin
 	testUser = userLogin.login()
@@ -54,7 +54,7 @@ def menu():
 	print("[d] set destination position")
 	print("[m] map distance between")
 	print("[t] run module tests")
-	print("[q] quit appl")
+	print("[q] quit app")
 	print("----------------------------------------")
 	print("\n")
 
@@ -67,12 +67,7 @@ def runApp(userName):
 	userQuit = False
 	while (not userQuit):
 
-		# menu
-		"""
-			here student needs to print their own menu. or, to do better, 
-			create a function to print your menu and simply call it here.
-		"""
-		
+		# calls menu procedure
 		menu()
 
 		# get first character of input
