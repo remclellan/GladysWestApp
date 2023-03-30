@@ -12,6 +12,69 @@ import gladysUserLogin as userLogin
 	Description: This module does sets up the main menu the user will select from as well as call to other modules and execute
 """
 
+def is_integer(num):
+    """
+		Func: test if input is a whole number
+		Desc: Intakes user_input for coordinate to confirm entry is a whole number for validation purposes
+	"""
+    try:
+        # Convert it into integer
+        val = int(num)
+        return True
+    except ValueError:
+        try:
+            val = float(num)
+            return val.is_integer()
+        except ValueError:
+            return False
+
+def validXNumber():
+	"""
+		Func: Validate X input
+		Desc: Confirms user entry is both whole number and within range for acceptable coordinate
+	"""
+
+	validX = ""
+
+	while (validX != True):
+		coordinate = input("Enter a x position: ")
+		wholeX = is_integer(coordinate)
+		if float(coordinate) >= 0 and float(coordinate) <= 99:
+			rangeX = True
+		else:
+			rangeX = False
+
+		if wholeX and rangeX:
+			validX = True
+			return coordinate
+		else:
+			validX = False
+			print(" Invalid entry. Please use whole numbers between 0 to 99.")
+
+
+def validYNumber():
+	"""
+		Func: Validate Y input
+		Desc: Confirms user entry is both whole number and within range for acceptable coordinate
+	"""
+
+	validY = ""
+
+	while (validY != True):
+		coordinate = input("Enter a y position: ")
+		wholeY = is_integer(coordinate)
+		if float(coordinate) >= 0 and float(coordinate) <= 99:
+			rangeY = True
+		else:
+			rangeY = False
+
+		if wholeY and rangeY:
+			validY = True
+			return coordinate
+		else:
+			validY = False
+			print("Invalid entry. Please use whole numbers between 0 to 99.")
+
 
 def runTests():
 	"""
@@ -88,13 +151,13 @@ def runApp(userName):
 		
 		# allows user to enter coordinate for current position
 		elif firstChar == 'c':
-			currentX = input("Enter x for current position: ")
-			currentY = input("Enter y for current position: ")
+			currentX = validXNumber()
+			currentY = validYNumber
 
 		#allows user to enter coordinates for destination position
 		elif firstChar == 'd':
-			destinationX = input("Enter x for destination position: ")
-			destinationY = input("Enter y for destination position: ")
+			destinationX = validXNumber()
+			destinationY = validYNumber()
 
 		# run function to tell distance between current and destination positions
 		elif firstChar == 'm':
