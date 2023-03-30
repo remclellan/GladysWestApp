@@ -1,21 +1,38 @@
 import io
+import re
 
 """
-	Student: Gabriel Solomon
+	Student: Raquel McLellan
 	Module: gladysUserLogin
-	Description: This module does …
+	Description: This module validates that the user has entered a valid email address format
 """
+
+def validate_email(email):
+	if re.match(r"[^@]+@[^@]+\.[^@]+", email):
+		return True
+	else:
+		return False
 
 
 def login():
 	"""
-		document your function definition here. what does it do?
+		Func: Login
+		Desc: chest user input to confirm format is a valid email address
 	"""
 
-	"""
-		delete the remaining code *in this function* and replace it with
-		your own code. add more code to do what the assignment asks of you.
-	"""
-	emailAddress = "malcomx@mecca.com"
+	valid = ""
 
-	return emailAddress
+	while (valid != True):
+		emailAddress = input("Enter user email address: ")
+		password = input("Enter user password: ")
+
+		valid = validate_email(emailAddress)
+
+		if valid:
+			return emailAddress
+		else:
+			print("User email is not a valid. Please try again.")
+
+
+
+	
