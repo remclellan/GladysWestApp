@@ -1,21 +1,32 @@
 import io
+from email_validator import validate_email
 
 """
-	Student: Gabriel Solomon
+	Student: Raquel McLellan
 	Module: gladysUserLogin
-	Description: This module does …
+	Description: This module validates that the user has entered a valid email address format
 """
 
 
 def login():
 	"""
-		document your function definition here. what does it do?
+		Func: Login
+		Desc: chest user input to confirm format is a valid email address
 	"""
 
-	"""
-		delete the remaining code *in this function* and replace it with
-		your own code. add more code to do what the assignment asks of you.
-	"""
-	emailAddress = "malcomx@mecca.com"
+	v = ""
 
-	return emailAddress
+	while (v != True):
+		emailAddress = input("Enter user email address: ")
+		password = input("Enter user password: ")
+
+		v = validate_email(emailAddress)
+
+		if v:
+			return emailAddress
+		else:
+			print("User email is not a valid. Please try again.")
+
+
+
+	

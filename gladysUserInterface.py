@@ -34,9 +34,9 @@ def runTests():
 
 def start():
 	"""
-		logs the user in, and runs the app
+		Func: Start
+		Desc: Calls login module to login user (if email valid) and runs app
 	"""
-
 	userName = userLogin.login()
 
 	runApp(userName)
