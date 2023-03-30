@@ -152,7 +152,7 @@ def runApp(userName):
 		# allows user to enter coordinate for current position
 		elif firstChar == 'c':
 			currentX = validXNumber()
-			currentY = validYNumber
+			currentY = validYNumber()
 
 		#allows user to enter coordinates for destination position
 		elif firstChar == 'd':
