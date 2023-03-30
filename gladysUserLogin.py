@@ -1,11 +1,17 @@
 import io
-from email_validator import validate_email
+import re
 
 """
 	Student: Raquel McLellan
 	Module: gladysUserLogin
 	Description: This module validates that the user has entered a valid email address format
 """
+
+def validate_email(email):
+	if re.match(r"[^@]+@[^@]+\.[^@]+", email):
+		return True
+	else:
+		return False
 
 
 def login():
@@ -14,15 +20,15 @@ def login():
 		Desc: chest user input to confirm format is a valid email address
 	"""
 
-	v = ""
+	valid = ""
 
-	while (v != True):
+	while (valid != True):
 		emailAddress = input("Enter user email address: ")
 		password = input("Enter user password: ")
 
-		v = validate_email(emailAddress)
+		valid = validate_email(emailAddress)
 
-		if v:
+		if valid:
 			return emailAddress
 		else:
 			print("User email is not a valid. Please try again.")
