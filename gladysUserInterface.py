@@ -35,9 +35,10 @@ def validXNumber():
 		Func: Validate X input
 		Desc: Confirms user entry is both whole number and within range for acceptable coordinate
 	"""
-
+	# initialize validX variable for loop
 	validX = ""
 
+	# loop to ensure user entry is valid integer before continuing
 	while (validX != True):
 		coordinate = input("Enter a numeric x position: ")
 		wholeX = is_integer(coordinate)
@@ -59,9 +60,10 @@ def validYNumber():
 		Func: Validate Y input
 		Desc: Confirms user entry is both whole number and within range for acceptable coordinate
 	"""
-
+	# initialize validY variable for loop
 	validY = ""
 
+	# loop to ensure user entry is valid integer before continuing
 	while (validY != True):
 		coordinate = input("Enter a numeric y position: ")
 		wholeY = is_integer(coordinate)
@@ -161,7 +163,7 @@ def runApp(userName):
 		menu(currentX, currentY, destinationX, destinationY, user)
 
 		# get first character of input
-		userInput = input("Enter a command:")
+		userInput = input("Enter a command: ")
 		lowerInput = userInput.lower()
 		firstChar = lowerInput[0:1]
 
@@ -185,10 +187,10 @@ def runApp(userName):
 			destinationX = validXNumber()
 			destinationY = validYNumber()
 
-		# run function to tell distance between current and destination positions
+		# run function to tell distance between current and destination positions and round result to 2 decimal place
 		elif firstChar == 'm':
 			distance = compute.distance(currentX,currentY,destinationX,destinationY)
-			print("Distance: " + str(distance) + "\n")
+			print("Distance: %.2f \n" %distance)
 		
 		else:
 			print("ERROR: " + firstChar + " is not a valid command")
