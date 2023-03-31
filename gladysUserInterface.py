@@ -24,6 +24,7 @@ def is_integer(num):
         return True
     except ValueError:
         try:
+	    # Convert to float to validate if whole number
             val = float(num)
             return val.is_integer()
         except ValueError:
@@ -38,7 +39,7 @@ def validXNumber():
 	validX = ""
 
 	while (validX != True):
-		coordinate = input("Enter a x position: ")
+		coordinate = input("Enter a numeric x position: ")
 		wholeX = is_integer(coordinate)
 		if float(coordinate) >= 0 and float(coordinate) <= 99:
 			rangeX = True
@@ -62,7 +63,7 @@ def validYNumber():
 	validY = ""
 
 	while (validY != True):
-		coordinate = input("Enter a y position: ")
+		coordinate = input("Enter a numeric y position: ")
 		wholeY = is_integer(coordinate)
 		if float(coordinate) >= 0 and float(coordinate) <= 99:
 			rangeY = True
@@ -80,21 +81,33 @@ def validYNumber():
 def runTests():
 	"""
 		Func: Tests
-		Desc: Tests some module functions
+		Desc: Tests selected linked module functions
 	"""
 
-	print("running a few tests")
+	print("Testing connected modules:")
 
 	# testing gpsValue function from gladysCompute module
-	average = compute.gpsAverage(4, 5)
+	print("Testing gladysCompute module...\n")
+	testX = validXNumber()
+	testY = validYNumber()
+	average = compute.gpsAverage(testX, testY)
 	print("average = ", average)
 
 	# testing readSat function from gladysSatellite module
-	print("Testing sat module")
+	print("Testing gladysSattelite module...")
+	testX = validXNumber()
+	testY = validYNumber()
+	satName = input("Please enter one of the following options: altitude, latitude, longitude, time: ")
+	satChoice = satName.lower()
+	data = satellite.gpsValue(testX,testY,satChoice)
+	print("Satellite data requested: " + str(data))
 
 	# testing login function from gladysUserLogin
+	print("Testing gladysUserLogin module...")
 	testUser = userLogin.login()
 	print(testUser)
+
+	print("Testing complete!\n")
 
 
 def start():
