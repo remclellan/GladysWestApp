@@ -56,24 +56,10 @@ def gpsValue(x, y, sat):
 		satY = elem["y"]
 		value = elem["value"]
 		
-		# was testing if above was reading properly
-		#print("X = " + str(satX))
-		#print("Y = " + str(satY))
-		#print("value = " + str(value))
-		
 		# set dict key to x,y coordinate comb
 		gpsCoordinates[satX,satY] = value
 
-	# tested to see that key coordinate resulted in proper value
-	#print(gpsCoordinates[0,0])
-
-	# tested out variable types to troubleshoot code error issue when gpsCoordinates[x,y] was used originally
-	#print(type(satX))
-	#print(type(satY))
-	#print(type(x))
-	#print(type(y))
-	#print(gpsCoordinates[int(x),int(y)])
-
+	# user input was showing as string so int() ensures variables are read correctly to return value from dict
 	result = gpsCoordinates[int(x),int(y)]
 	
 	return result
