@@ -119,7 +119,7 @@ def start():
 
 	runApp(userName)
 
-def menu():
+def menu(currentX,currentY,destinationX,destinationY, user):
 	"""
 		Func: Menu
 		Desc: Displays menu of choices for user to select from
@@ -127,6 +127,10 @@ def menu():
 	# menu choices
 	print("----------------------------------------")
 	print("-- Welcome to the Gladys West Map App --")
+	print("   Logged In User: " + user )
+	print("----------------------------------------")
+	print("Current = (" + str(currentX) + ", " + str(currentY) + ")")
+	print("Destination = (" + str(destinationX) + ", " + str(destinationY) + ")")
 	print("----------------------------------------")
 	print("[c] set current postion")
 	print("[d] set destination position")
