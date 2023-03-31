@@ -5,5 +5,9 @@ Python application leveraging 4 modules utilizing a text-based menu that will en
 
 
 Contributions by the PyLadies :snake:
-* _Jeanette Dominguez_
-* _Raquel McLellan_
+* **_Raquel McLellan_**
+     - gladysUserInterface.py
+     - gladysUserLogin.py
+     - gladysCompute.py
+     - gladysSatellite.py
+* _Jeanette Dominguez: [see forked respository here](https://github.com/Jeanette-ArmyVet/GladysWestApp)_ 
