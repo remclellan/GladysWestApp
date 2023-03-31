@@ -3,9 +3,10 @@ import json
 import os
 
 """
-	Student: Gabriel Solomon
+	Student: Raquel McLellan
 	Module: gladysSatellite
-	Description: This module does …
+	Description: This module reads the satellite json file from the stored location using relative path to the data 
+					and then looks up value based on the coordinates provided to return value for calculations
 """
 
 
@@ -36,39 +37,43 @@ def readSat(sat, pathToJSONDataFiles):
 
 def gpsValue(x, y, sat):
 	"""
-		document your function definition here. what does it do?
+		Func: GPS Value
+		Desc: Using coordinates provided looks up value assigned based on selected satellite and returns result for use in other modules
 	"""
-
-	"""
-		This first part of this function to read satelite data only read 
-		satellite data. students need to change the pathToJSONDataFiles 
-		variable so it works on your computer.
-
-		this is *windows* path, not a mac path.
-		if you do not know what a path (on a computer) is, you should use google and
-		youtube to learn, or come to office hours so I can explain it to you.
-
-		students will need to change this pathToJSONDataFiles variable to point to
-		where you have the data files stoed on your computer.  If you do not
-		change it, the code will not "work".
-
-		You can/should remove this long comment before you submit your work.  
-		I'm just giving advice to try to help you. Good luck!  -Gabriel :)
-	"""
+	# using relative path file leverage os library 
 	pathToJSONDataFiles = os.path.realpath(os.path.join(os.path.dirname(__file__),'data'))
 
 	# read the satellite data
 	data = readSat(sat, pathToJSONDataFiles)
 
-	"""
-		delete the remaining code *in this function* and replace it with
-		your own code. add more code to do what the assignment asks of you.
+	# create an empty dictionary
+	gpsCoordinates = {}
 
-		tip: here is where students need to look through the data variable
-		read from the satellites and find a matching x,y to return the value.
-		to understand better, open and look at the json satellite data in
-		vs code.
-	"""
-	value = 1234
+	# loop json list of data and put each name and birthday into a dictionary
+	for elem in data:
+    	# fetch name and birthday
+		satX = elem["x"]
+		satY = elem["y"]
+		value = elem["value"]
+		
+		# was testing if above was reading properly
+		#print("X = " + str(satX))
+		#print("Y = " + str(satY))
+		#print("value = " + str(value))
+		
+		# set dict key to x,y coordinate comb
+		gpsCoordinates[satX,satY] = value
 
-	return value
+	# tested to see that key coordinate resulted in proper value
+	#print(gpsCoordinates[0,0])
+
+	# tested out variable types to troubleshoot code error issue when gpsCoordinates[x,y] was used originally
+	#print(type(satX))
+	#print(type(satY))
+	#print(type(x))
+	#print(type(y))
+	#print(gpsCoordinates[int(x),int(y)])
+
+	result = gpsCoordinates[int(x),int(y)]
+	
+	return result
