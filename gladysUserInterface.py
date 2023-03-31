@@ -144,13 +144,21 @@ def runApp(userName):
 	"""
 		runs the app
 	"""
+	user = userName
+
+	# initialize x,y values with valid integers for current and destination
+	currentX = 0
+	currentY = 0
+	destinationX = 0
+	destinationY = 0
+
 
 	# loop until user types q
 	userQuit = False
 	while (not userQuit):
 
 		# calls menu procedure
-		menu()
+		menu(currentX, currentY, destinationX, destinationY, user)
 
 		# get first character of input
 		userInput = input("Enter a command:")
@@ -179,7 +187,8 @@ def runApp(userName):
 
 		# run function to tell distance between current and destination positions
 		elif firstChar == 'm':
-			print("Distance: ")
+			distance = compute.distance(currentX,currentY,destinationX,destinationY)
+			print("Distance: " + str(distance) + "\n")
 		
 		else:
 			print("ERROR: " + firstChar + " is not a valid command")
